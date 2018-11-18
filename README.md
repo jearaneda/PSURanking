@@ -11,3 +11,9 @@ Calculadora de Ranking PSU en React Native
 
 3. Porque es divertido :) 
 
+
+También dejo la fórmula aquí por si de algo sirve:
+
+[[https://github.com/jearaneda/PSURanking/blob/master/ranking_formula.gif]]
+
+
