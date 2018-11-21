@@ -1,7 +1,7 @@
 // Home.js
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, Alert} from 'react-native';
+import { View, Text, TextInput, Button, Alert, Picker} from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Calculator } from 'react-native-calculator'
 
@@ -9,12 +9,11 @@ export class Home extends Component {
 
   constructor(props) {
   super(props);
-  this.state = { text: 'Selecciona...', text2: "Selecciona..."};
+  this.state = { text: 'Selecciona...', text2: "Selecciona...", tuNEM : "0"};
 }
 
 
   render() {
-
     let sum = 0;
     let nem = 0;
 
@@ -84,69 +83,27 @@ export class Home extends Component {
 
 
 
-let tNEM = [{
-value: '186',
-}, {
-value: '208',
-}, {
-value: '230',
-}, {
-value: '252',
-}, {
-value: '274',
-}, {
-value: '296',
-}, {
-value: '318',
-}, {
-value: '340',
-}, {
-value: '362',
-}, {
-value: '385',
-}, {
-value: '407',
-}, {
-value: '429',
-}, {
-value: '451',
-}, {
-value: '473',
-}, {
-value: '495',
-}, {
-value: '517',
-}, {
-value: '538',
-}, {
-value: '558',
-}, {
-value: '579',
-}, {
-value: '601',
-}, {
-value: '623',
-}, {
-value: '644',
-}, {
-value: '665',
-}, {
-value: '686',
-}, {
-value: '707',
-}, {
-value: '729',
-}, {
-value: '750',
-}, {
-value: '771',
-}, {
-value: '792',
-}, {
-value: '813',
-}, {
-value: '835',
-}];
+let tNEM = [
+'186', '208','230','252','274','296','318','340', '362','385', '407', '429', '451', '473','495','517','538','558','579','601','623','644','665','686','707','729','750','771','792','813','836'];
+
+
+function calcula(std, ind ,max){
+  if (Number(max) < 5.5) {
+    return 'Ajustar maximo, es menor al promedio'
+  }
+
+  else if (std > max) {
+    return 850
+  }
+  else if (std < 5.5) {
+    return tNEM[ind] 
+
+  }
+
+  else {
+return Math.round(Number(tNEM[ind]) + Number((((850 - Number(tNEM[ind])))*(std - 5.3))/((Number(max) - 5.3 )))) ;
+}
+}
 
     return (
 
@@ -155,23 +112,28 @@ value: '835',
       <Dropdown
         label='Tu NEM'
         data={NEM}
-        onChangeText={(text) => { this.setState({text})} }
+        onChangeText={(text,index) => { this.setState({text,index} ) ;
+         this.state.tuNEM = index;
+         console.log(this.state.tuNEM);
+       }}
         value={this.state.text}
+
               />
 
       <Dropdown
         label='El NEM más alto de tu curso'
         data={NEM}
-        onChangeText={(text2) => {this.setState({text2}); } }
+        onChangeText={(text2) => {this.setState({text2});} }
         value={this.state.text2}
       />
 
-      <Text style = {{textAlign : "center"}}>Tu ranking es: {this.state.text} + {this.state.text2} </Text>
+      <Text style = {{textAlign : "center"}}>Recuerda que la fórmula usada es la oficial. Se asume un PC3 de 5.5. <Text onPress={() => this.props.navigation.navigate('AssumptionsScreen')}  style = {{color : '#0645AD'}}>¿Por qué? </Text> </Text>
 </React.Fragment>
 
 
 
-<Button onPress={() => Alert.alert('Tu ranking es' + Number((850 - Number(this.state.text))/(this.state.text2 - 5.5 )) ) } title="Calcular"/>
+<Button onPress={() => {Alert.alert('Tu ranking es' +  calcula(this.state.text, this.state.tuNEM, this.state.text2) +  Math.round(Number(tNEM[this.state.tuNEM]) + Number((((850 - Number(tNEM[this.state.tuNEM])))*(this.state.text - 5.3))/((Number(this.state.text2) - 5.3 )))) ); console.log(this.state.tuNEM)
+}} title="Calcular"/>
 </View>
     )
   }
