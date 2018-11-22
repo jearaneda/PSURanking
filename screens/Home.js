@@ -96,7 +96,7 @@ function calcula(std, ind ,max){
     return 850
   }
   else if (std < 5.5) {
-    return tNEM[ind] 
+    return tNEM[ind]
 
   }
 
@@ -132,7 +132,7 @@ return Math.round(Number(tNEM[ind]) + Number((((850 - Number(tNEM[ind])))*(std -
 
 
 
-<Button onPress={() => {Alert.alert('Tu ranking es' +  calcula(this.state.text, this.state.tuNEM, this.state.text2) +  Math.round(Number(tNEM[this.state.tuNEM]) + Number((((850 - Number(tNEM[this.state.tuNEM])))*(this.state.text - 5.3))/((Number(this.state.text2) - 5.3 )))) ); console.log(this.state.tuNEM)
+<Button onPress={() => {Alert.alert('Tu ranking es' +  calcula(this.state.text, this.state.tuNEM, this.state.text2) ); console.log(this.state.tuNEM)
 }} title="Calcular"/>
 </View>
     )
