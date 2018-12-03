@@ -16,4 +16,4 @@ También dejo la fórmula aquí por si de algo sirve:
 
 
 
-![Image](https://github.com/jearaneda/PSURanking/blob/master/ranking_formula.gif?raw=true)
+![Image](https://github.com/jearaneda/PSURanking/blob/master/coso.png?raw=true)
