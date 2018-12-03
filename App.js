@@ -16,8 +16,8 @@ import Assumptions from './screens/Assumptions';
 
 
 const AppNavigator = StackNavigator({
-  SettingScreen: { screen: Settings },
-  HomeScreen: { screen: Home },
+  SettingScreen: { screen: Settings, navigationOptions : {header: null, } },
+  HomeScreen: { screen: Home, navigationOptions : {header: null, } },
   AssumptionsScreen: { screen: Assumptions}
 });
 

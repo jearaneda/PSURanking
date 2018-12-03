@@ -1,7 +1,7 @@
 // Home.js
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, Alert, Picker} from 'react-native';
+import { View, Text, TextInput, Button, Alert, Picker, ImageBackground} from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Calculator } from 'react-native-calculator'
 
@@ -107,7 +107,9 @@ return Math.round(Number(tNEM[ind]) + Number((((850 - Number(tNEM[ind])))*(std -
 
     return (
 
-<View>
+<ImageBackground source={require('../bg3.jpeg')}  style = {{ flex:1,
+  flexDirection:'column',
+  justifyContent:'center'}} >
     <React.Fragment>
       <Dropdown
         label='Tu NEM'
@@ -134,7 +136,7 @@ return Math.round(Number(tNEM[ind]) + Number((((850 - Number(tNEM[ind])))*(std -
 
 <Button onPress={() => {Alert.alert('Tu ranking es' +  calcula(this.state.text, this.state.tuNEM, this.state.text2) ); console.log(this.state.tuNEM)
 }} title="Calcular"/>
-</View>
+</ImageBackground>
     )
   }
 }
